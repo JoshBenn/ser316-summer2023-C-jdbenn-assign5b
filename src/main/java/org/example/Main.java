@@ -70,23 +70,20 @@ public class Main {
         while(choiceNotMade) {
             Scanner input = new Scanner(System.in);
             System.out.println("Choose what to do:\n" +
-                    "1: Explore || 2: Return Home || 3: None");
+                    "1: Attack || 2: Return Home || 3: None");
             String value = input.nextLine();
 
             if(!value.equals("")) {
                 try {
                     switch (Integer.valueOf(value)) {
                         case 1:
-                            characterSelection = 1;
-                            characterNotSelected = false;
+                            //do damage
                             break;
                         case 2:
-                            characterSelection = 2;
-                            characterNotSelected = false;
+                            //return to top floor
                             break;
                         case 3:
-                            characterSelection = 3;
-                            characterNotSelected = false;
+                            //nothing atm
                             break;
                         default:
                             System.out.println("Incorrect choice.");

@@ -17,7 +17,7 @@ public class Floor {
         Random random = new Random();
         int enemyGenerator = random.nextInt(3);
         enemy = new CharacterBuilder(enemyGenerator);
-        enemy.getCharacter().setBossHealth(floorNumber * floorType);
+        //enemy.getCharacter().setBossHealth(floorNumber * floorType);
     }
 
     public void doDamage(int damage) {
