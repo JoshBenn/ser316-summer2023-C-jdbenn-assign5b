@@ -1,8 +1,10 @@
 package org.example;
 
+import java.util.Random;
+
 public class Character {
     //Damage is calculated as potency*(potency+penetration) with an accuracy(100)% chance of hitting
-    private final double accuracy, penetration, potency;
+    private double accuracy, penetration, potency;
     private int health, experience, level;
     private final String damageType, characterNumber;
 
@@ -46,7 +48,9 @@ public class Character {
      */
     public void setHealth(int modifier) {this.health += modifier;}
 
-    public void setBossHealth(int floorNumber) {this.health = 10*floorNumber;}
+    public void setEnemyHealth(int floorValue) {this.health = 2*floorValue;}
+
+    public void setEnemyAccuracy(int floorNumber) {this.accuracy = floorNumber/100;}
 
     /**
      * Gets the health value of the character.
@@ -63,6 +67,27 @@ public class Character {
             this.experience -= 100*this.level;
             this.level++;
         }
+    }
+
+    public int doDamage(String[] gameState) {
+        //initiate the main calculations
+        double accuracy = this.accuracy;
+        double penetration = this.penetration;
+        //get the info from the current state of the game
+        for(int i = 9; i < gameState.length-1; i++) {
+            String[] armorStats = gameState[i].split("|");
+            accuracy += Double.valueOf(armorStats[0]);
+            penetration += Double.valueOf(armorStats[2]);
+        }
+        //Accuracy check
+        Random random = new Random();
+        accuracy = 100-accuracy*100;
+        int chance = random.nextInt(100)+1;
+        //Return 0 if missed
+        if(chance < accuracy)
+            return 0;
+
+        return (int) Math.ceil(penetration*this.potency);
     }
 
     public int getLevel() {return this.level;}
@@ -86,4 +111,5 @@ public class Character {
      * @return ascii image
      */
     public String getImage() {  return null;  }
+    public String getEnemyImage() {return null;}
 }

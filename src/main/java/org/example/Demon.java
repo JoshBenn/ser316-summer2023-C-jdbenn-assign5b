@@ -6,7 +6,7 @@ package org.example;
  */
 public class Demon extends Character {
     public Demon() {
-        super(0.5, 0.5, 1, "Physical", "2");
+        super(0.5, 0.5, 5, "Physical", "2");
     }
 
     /**
@@ -18,5 +18,12 @@ public class Demon extends Character {
         return  "    |__|\n" +
                 "   ( o.o) \n" +
                 "  Z(  >) ";
+    }
+
+    @Override
+    public String getEnemyImage() {
+        return  "                        |__|\n" +
+                "                       (o.o ) \n" +
+                "                        (<  )z ";
     }
 }

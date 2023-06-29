@@ -27,4 +27,6 @@ public class CharacterBuilder {
     public String getImage() {
         return this.character.getImage();
     }
+
+    public String getEnemyImage() {return this.character.getEnemyImage(); }
 }

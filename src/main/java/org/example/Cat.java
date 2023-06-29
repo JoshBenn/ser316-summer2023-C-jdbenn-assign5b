@@ -7,7 +7,7 @@ package org.example;
 public class Cat extends Character {
 
     public Cat() {
-        super(0.5, 0.5, 1, "Magic", "1");
+        super(0.5, 0.5, 5, "Magic", "1");
     }
 
     /**
@@ -19,5 +19,12 @@ public class Cat extends Character {
         return  "    /\\/\\\n" +
                 "   ( o.o) \n" +
                 "  \\(  >) ";
+    }
+
+    @Override
+    public String getEnemyImage() {
+        return  "                        /\\/\\\n" +
+                "                       (o.o ) \n" +
+                "                        (<  )/ ";
     }
 }
