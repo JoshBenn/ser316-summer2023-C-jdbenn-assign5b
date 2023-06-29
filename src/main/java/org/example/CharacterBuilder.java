@@ -18,11 +18,13 @@ public class CharacterBuilder {
     }
 
     public String getCharacterNumber() {
-        return character.getCharacterNumber();
+        return this.character.getCharacterNumber();
     }
+
+    public Character getCharacter() {return this.character;}
 
 
     public String getImage() {
-        return character.getImage();
+        return this.character.getImage();
     }
 }
