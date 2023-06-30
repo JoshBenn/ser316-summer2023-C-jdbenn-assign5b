@@ -24,8 +24,8 @@ public class Floor {
         //Create a randomly generated enemy from the available choices
         Random random = new Random();
         int enemyGenerator = random.nextInt(3) +1;
-        CharacterBuilder tempEnemy = new CharacterBuilder(enemyGenerator);
-        enemy = tempEnemy.getCharacter();
+        CharacterBuilder characterBuilder = new CharacterBuilder();
+        enemy = characterBuilder.generateCharacter();
         enemy.setEnemyHealth(floorNumber * floorType);
         enemy.setEnemyAccuracy(floorNumber);
     }

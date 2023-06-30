@@ -1,34 +1,39 @@
 package org.example;
 
+import java.util.Random;
+
 /**
  * General character builder class.
  * Builds a character for the player or the floor.
  */
 public class CharacterBuilder {
-    private Character character;
+    private Character tempCharacter;
 
     /**
-     * General Constructor for the characterbuilder class.
-     * @param selection
+     * Generates a random character.
+     * @return randomly generated character
      */
-    public CharacterBuilder(int selection) {
-        switch(selection) {
-            case 1:
-                character = new Cat();
-                break;
-            case 2:
-                character = new Demon();
-                break;
-            case 3:
-                character = new Human();
-                break;
-        }
+    public Character generateCharacter() {
+        Random random = new Random();
+        return generateCharacter(random.nextInt(3)+1);
     }
 
     /**
-     * Returns the character created by the characterBuilder.
-     * @return Character tempCharacter
+     * Generates the chosen character type.
+     * @param selection (1) Cat, (2) Demon, (3) Human
      */
-    public Character getCharacter() {return this.character;}
-
+    public Character generateCharacter(int selection) {
+        switch(selection) {
+            case 1:
+                tempCharacter = new Cat();
+                break;
+            case 2:
+                tempCharacter = new Demon();
+                break;
+            case 3:
+                tempCharacter = new Human();
+                break;
+        }
+        return tempCharacter;
+    }
 }

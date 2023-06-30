@@ -20,7 +20,11 @@ public class Main {
     // 14. Current Gold
     static String[] gameState;
     static boolean alive;
-    static Character character;
+    static Character playerCharacter;
+    static CharacterBuilder characterBuilder;
+    static ArmorBuilder armorBuilder;
+    static FloorBuilder floorBuilder;
+    static Armor[] armorSet;
 
     /**
      * Asks the player for an input and creates the character.
@@ -61,35 +65,58 @@ public class Main {
             } else
                 System.out.println("Incorrect choice...");
         }
-        CharacterBuilder tempCharacter = new CharacterBuilder(characterSelection);
-        return tempCharacter.getCharacter();
+        return characterBuilder.generateCharacter(characterSelection);
     }
 
     /**
      * Returns the player to the origin floor and resets a few values.
      */
     private static void returnHome() {
+        //Set the level
+        playerCharacter.setLevel();
+        gameState[2] = String.valueOf(playerCharacter.getLevel());
+        //Set current exp
+        gameState[3] = String.valueOf(playerCharacter.getExperience());
+        //Set Current Health
+        gameState[4] = String.valueOf(playerCharacter.getHealth());
+        //Set current floor
         gameState[5] = "1";
-        character.setLevel();
-        gameState[3] = String.valueOf(character.getExperience());
+        //Set permanent status
+        gameState[6] = "none";
+        //Set temporary status
+        gameState[7] = "none";
+        //Set Event
+        gameState[8] = null;
+        //Set weapon stats
+        gameState[9] = "0.05|0.01";
+        //Set Helmet stats
+        gameState[10] = "0.01|0.01";
+        //Set Chest stats
+        gameState[11] = "0.02|0.01";
+        //Set Pants stats
+        gameState[12] = "0.02|0.01";
+        //Set Boots stats
+        gameState[13] = "0.01|0.01";
+        //Set Starting gold
+        gameState[14] = "0";
     }
 
     /**
      * General method mediating player interaction with the floor.
      */
     private static void encounterFloor() {
-        FloorBuilder floor = new FloorBuilder(Integer.valueOf(gameState[5]));
+        Floor floor = floorBuilder.generateFloor(gameState);
         System.out.println("#########################################################################\n" +
                            "     Floor: " + gameState[5] + "\n");
         System.out.println("You have encountered an evil creature! \n");
 
         boolean floorCleared = false;
         while(!floorCleared) {
-            //Print the current state
-            System.out.println("Enemy Health: " + floor.getFloor().getCharacter().getHealth());
-            System.out.println(floor.getFloor().getCharacter().getEnemyImage());
-            System.out.println(character.getImage() + "          Health: "
-                    + character.getHealth());
+            //Print the interaction window
+            System.out.println("Enemy Health: " + floor.getCharacter().getHealth());
+            System.out.println(floor.getCharacter().getEnemyImage());
+            System.out.println(playerCharacter.getImage() + "          Health: "
+                    + playerCharacter.getHealth());
             System.out.println("Status:\n" +
                     "Gold: " + gameState[14] + " || Buff: " + gameState[6]
                     + " || Debuff: " + gameState[7]);
@@ -106,39 +133,40 @@ public class Main {
                     switch (Integer.valueOf(value)) {
                         case 1:
                             //Calculate player damage to the enemy
-                            int playerDamage = character.doDamage(gameState);
-                            floor.getFloor().doDamage(playerDamage);
+                            int playerDamage = playerCharacter.doDamage(gameState);
+                            floor.doDamage(playerDamage);
                             if(playerDamage == 0)
                                 System.out.println("The evil creature dodges the attack!");
                             else
                                 System.out.println("The evil creature takes " + playerDamage + " damage!\n");
 
-                            if(floor.getFloor().getClearedStatus()) {
+                            //Check if the floor is cleared
+                            if(floor.getClearedStatus()) {
                                 floorCleared = true;
                                 //Update the floor Number
                                 gameState[5] = String.valueOf(Integer.valueOf(gameState[5])+1);
                                 //Update experience
-                                gameState[3] = String.valueOf(Integer.valueOf(gameState[3]) + floor.getFloor().getExperienceGain());
-                                character.gainExperience(Integer.valueOf(gameState[3]));
-                                //Get ze goldu
-                                gameState[14] = String.valueOf(Integer.valueOf(gameState[14]) + floor.getFloor().getGoldGain());
-                                int rewardChance = floor.getFloor().clearFloor();
+                                gameState[3] = String.valueOf(Integer.valueOf(gameState[3]) + floor.getExperienceGain());
+                                playerCharacter.gainExperience(Integer.valueOf(gameState[3]));
+                                //Get ze gold
+                                gameState[14] = String.valueOf(Integer.valueOf(gameState[14]) + floor.getGoldGain());
+                                int rewardChance = floor.clearFloor();
                             } else {
                                 //If the enemy is not killed, player takes damage
-                                int enemyDamage = floor.getFloor().getCharacter().doDamage(gameState);
-                                character.setHealth(-1*enemyDamage);
+                                int enemyDamage = floor.getCharacter().doDamage(gameState);
+                                playerCharacter.setHealth(-1*enemyDamage);
                                 if(enemyDamage == 0)
                                     System.out.println("You dodge the attack!");
                                 else
                                     System.out.println("You take " + enemyDamage + " damage!\n");
                                 //If the player died
-                                if(character.getHealth() <= 0) {
+                                if(playerCharacter.getHealth() <= 0) {
                                     alive = false;
                                     System.out.println("You have died!!!\n" +
                                             "GAME OVER");
                                 }
                                 //Update the game state
-                                gameState[4] = String.valueOf(character.getHealth());
+                                gameState[4] = String.valueOf(playerCharacter.getHealth());
                             }
                             break;
                         case 2:
@@ -166,48 +194,26 @@ public class Main {
      */
     public static void main(String[] args) {
          gameState = new String[15];
+         characterBuilder = new CharacterBuilder();
+         floorBuilder = new FloorBuilder();
+         armorBuilder = new ArmorBuilder();
 
         //Select character and add it to the game state
-        character = selectCharacter();
+        playerCharacter = selectCharacter();
         alive = true;
         //Initialize the game state
-        gameState[0] = character.getCharacterNumber();
+        gameState[0] = playerCharacter.getCharacterNumber();
         //Set the weapon type
-        gameState[1] = character.getDamageType();
-        //Set current level
-        gameState[2] = String.valueOf(character.getLevel());
-        //Set current exp
-        gameState[3] = String.valueOf(character.getExperience());
-        //Set Current Health
-        gameState[4] = String.valueOf(character.getHealth());
-        //Set current floor
-        gameState[5] = "1";
-        //Set permanent status
-        gameState[6] = "none";
-        //Set temporary status
-        gameState[7] = "none";
-        //Set Event
-        gameState[8] = null;
-        //Set weapon stats
-        gameState[9] = "0.05|0.01";
-        //Set Helmet stats
-        gameState[10] = "0.01|0.01";
-        //Set Chest stats
-        gameState[11] = "0.02|0.01";
-        //Set Pants stats
-        gameState[12] = "0.02|0.01";
-        //Set Boots stats
-        gameState[13] = "0.01|0.01";
-        //Set Starting gold
-        gameState[14] = "0";
+        gameState[1] = playerCharacter.getDamageType();
 
         //The game loop
         while(alive){
+            returnHome();
             encounterFloor();
         }
 
 
 
-        System.out.println(character.getImage());
+        System.out.println(playerCharacter.getImage());
     }
 }

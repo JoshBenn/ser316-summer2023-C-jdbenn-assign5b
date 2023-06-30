@@ -4,25 +4,21 @@ package org.example;
  * General class to build a floor object.
  */
 public class FloorBuilder {
-    private final Floor floor;
+    private Floor tempFloor;
     //Small = 1, Medium = 2, Boss = 3
 
     /**
-     * General constructor
-     * @param floorNumber requires the current floor number
+     * Generates a new floor type based on the floorNumber.
+     * @param gameState the state of the game
      */
-    public FloorBuilder(int floorNumber) {
+    public Floor generateFloor(String[] gameState) {
+        int floorNumber = Integer.valueOf(gameState[5]);
         if(floorNumber%10 == 0)
-            floor = new BossFloor(floorNumber);
+            tempFloor = new BossFloor(floorNumber);
         else if(floorNumber%5 == 0)
-            floor = new MediumFloor(floorNumber);
+            tempFloor = new MediumFloor(floorNumber);
         else
-            floor = new NormalFloor(floorNumber);
+            tempFloor = new NormalFloor(floorNumber);
+        return tempFloor;
     }
-
-    /**
-     * Gets the floor object created by this class.
-     * @return floor object
-     */
-    public Floor getFloor() { return this.floor; }
 }
