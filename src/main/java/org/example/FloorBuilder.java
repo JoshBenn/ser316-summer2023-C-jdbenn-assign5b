@@ -1,11 +1,16 @@
 package org.example;
 
-import java.util.Random;
-
+/**
+ * General class to build a floor object.
+ */
 public class FloorBuilder {
-    private Floor floor;
+    private final Floor floor;
     //Small = 1, Medium = 2, Boss = 3
 
+    /**
+     * General constructor
+     * @param floorNumber requires the current floor number
+     */
     public FloorBuilder(int floorNumber) {
         if(floorNumber%10 == 0)
             floor = new BossFloor(floorNumber);
@@ -15,5 +20,9 @@ public class FloorBuilder {
             floor = new NormalFloor(floorNumber);
     }
 
-    public Floor getFloor() {return this.floor;}
+    /**
+     * Gets the floor object created by this class.
+     * @return floor object
+     */
+    public Floor getFloor() { return this.floor; }
 }

@@ -20,6 +20,10 @@ public class Demon extends Character {
                 "  Z(  >) ";
     }
 
+    /**
+     * getEnemyImage returns an image of the enemy character.
+     * @return ascii image
+     */
     @Override
     public String getEnemyImage() {
         return  "                        |__|\n" +

@@ -20,6 +20,10 @@ public class Human extends Character {
                 "   (  >) ";
     }
 
+    /**
+     * getEnemyImage returns an image of the enemy.
+     * @return ascii image
+     */
     @Override
     public String getEnemyImage() {
         return  "                        ,,,,\n" +

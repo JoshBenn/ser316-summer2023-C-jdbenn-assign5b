@@ -11,7 +11,7 @@ public class Cat extends Character {
     }
 
     /**
-     * getImage returns an image of the character class.
+     * getImage returns an image of the character class for player.
      * @return ascii image
      */
     @Override
@@ -21,6 +21,10 @@ public class Cat extends Character {
                 "  \\(  >) ";
     }
 
+    /**
+     * getEnemyImage returns an image of class if it is an enemy.
+     * @return ascii image
+     */
     @Override
     public String getEnemyImage() {
         return  "                        /\\/\\\n" +

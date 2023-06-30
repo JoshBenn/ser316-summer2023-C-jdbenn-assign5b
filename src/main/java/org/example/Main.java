@@ -65,12 +65,18 @@ public class Main {
         return tempCharacter.getCharacter();
     }
 
+    /**
+     * Returns the player to the origin floor and resets a few values.
+     */
     private static void returnHome() {
         gameState[5] = "1";
         character.setLevel();
         gameState[3] = String.valueOf(character.getExperience());
     }
 
+    /**
+     * General method mediating player interaction with the floor.
+     */
     private static void encounterFloor() {
         FloorBuilder floor = new FloorBuilder(Integer.valueOf(gameState[5]));
         System.out.println("#########################################################################\n" +
@@ -154,7 +160,10 @@ public class Main {
     }
 
 
-
+    /**
+     * main.
+     * @param args I'm a pirate
+     */
     public static void main(String[] args) {
          gameState = new String[15];
 
