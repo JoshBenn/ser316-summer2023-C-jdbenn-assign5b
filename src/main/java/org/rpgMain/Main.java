@@ -31,6 +31,8 @@ public class Main {
     static CharacterBuilder characterBuilder;
     static ArmorBuilder armorBuilder;
     static FloorBuilder floorBuilder;
+    static Shop shop;
+    static DisplayOutput displayOutput;
     static Armor[] armorSet;
     static int[] potions;
 
@@ -75,166 +77,12 @@ public class Main {
         }
         return characterBuilder.generateCharacter(characterSelection);
     }
-
-    /**
-     * Provides a list of buff options to choose from.
-     */
-    private static void purchaseBuffs() {
-        System.out.println("\nChoose a buff (10,000 each):\n" +
-                "1: Strengthened || 2: Quickened || 3: Fortified || 4: Return");
-        Scanner shopInput = new Scanner(System.in);
-        String shopValue = shopInput.nextLine();
-        System.out.println();
-        if(!shopValue.equals("")) {
-            try {
-                if(Integer.parseInt(gameState[14]) < 10000) {
-                    System.out.println("You do not have enough gold! :(");
-                    enterShop();
-                }
-                switch (Integer.parseInt(shopValue)) {
-                    case 1:
-                        gameState[6] = "STR+";
-                        gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 10000);
-                        break;
-                    case 2:
-                        gameState[6] = "SPD+";
-                        gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 10000);
-                        break;
-                    case 3:
-                        gameState[6] = "REG+";
-                        gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 10000);
-                        break;
-                    case 4:
-                        enterShop();
-                    default:
-                        System.out.println("Incorrect choice.");
-                        break;
-                }
-            } catch (Exception e) {
-                System.out.println("Incorrect choice..");
-            }
-        } else
-            System.out.println("Incorrect choice...");
-    }
-
-    /**
-     * Provides a list of potion options to choose from.
-     */
-    private static void purchasePotions() {
-        System.out.println("\nChoose a potion (200 each):\n" +
-                "1: Health || 2: Elixir || 3: Love Potion #9 || 4: Return");
-        Scanner shopInput = new Scanner(System.in);
-        String shopValue = shopInput.nextLine();
-        System.out.println();
-        if(!shopValue.equals("")) {
-            try {
-                if(Integer.parseInt(gameState[14]) < 200) {
-                    System.out.println("You do not have enough gold! :(");
-                    enterShop();
-                }
-                switch (Integer.parseInt(shopValue)) {
-                    case 1:
-                        potions[0]++;
-                        gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 200);
-                        break;
-                    case 2:
-                        potions[1]++;
-                        gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 200);
-                        break;
-                    case 3:
-                        System.out.println("Butterfly in the sky.");
-                        gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 200);
-                        break;
-                    case 4:
-                        enterShop();
-                    default:
-                        System.out.println("Incorrect choice.");
-                        break;
-                }
-            } catch (Exception e) {
-                System.out.println("Incorrect choice..");
-            }
-        } else
-            System.out.println("Incorrect choice...");
-    }
-
-    /**
-     * Provides a list of scroll options to choose from.
-     */
-    private static void purchaseScrolls() {
-        System.out.println("\nChoose a scroll (100,000 each):\n" +
-                "1: Bonus XP || 2: Bonus Accuracy || 3: Bonus Gold || 4: Exit Shop");
-        Scanner shopInput = new Scanner(System.in);
-        String shopValue = shopInput.nextLine();
-        System.out.println();
-        if(!shopValue.equals("")) {
-            try {
-                if(Integer.parseInt(gameState[14]) < 100000) {
-                    System.out.println("You do not have enough gold! :(");
-                    enterShop();
-                }
-                switch (Integer.parseInt(shopValue)) {
-                    case 1:
-                        gameState[8] = "EXP+";
-                        gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 100000);
-                        break;
-                    case 2:
-                        gameState[8] = "ACC+";
-                        gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 100000);
-                        break;
-                    case 3:
-                        gameState[8] = "GLD+";
-                        gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 100000);
-                        break;
-                    case 4:
-                        enterShop();
-                    default:
-                        System.out.println("Incorrect choice.");
-                        break;
-                }
-            } catch (Exception e) {
-                System.out.println("Incorrect choice..");
-            }
-        } else
-            System.out.println("Incorrect choice...");
-    }
-
-
-    private static void enterShop() {
-        System.out.println("\nChoose what to do:\n" +
-                "1: Buffs || 2: Potions || 3: Scrolls || 4: Exit Shop");
-        Scanner shopInput = new Scanner(System.in);
-        String shopValue = shopInput.nextLine();
-        System.out.println();
-        if(!shopValue.equals("")) {
-            try {
-                switch (Integer.parseInt(shopValue)) {
-                    case 1:
-                        purchaseBuffs();
-                        break;
-                    case 2:
-                        purchasePotions();
-                        break;
-                    case 3:
-                        purchaseScrolls();
-                        break;
-                    case 4:
-                        returnHome();
-                    default:
-                        System.out.println("Incorrect choice.");
-                        break;
-                }
-            } catch (Exception e) {
-                System.out.println("Incorrect choice..");
-            }
-        } else
-            System.out.println("Incorrect choice...");
-    }
+    
 
     /**
      * Returns the player to the origin floor and resets a few values.
      */
-    private static void returnHome() {
+    public static void returnHome() {
         //Update Game State
         //Set the level
         playerCharacter.setLevel();
@@ -251,12 +99,7 @@ public class Main {
         gameState[12] = armorSet[3].getAccuracy() + "|" + armorSet[3].getPenetration();
         gameState[13] = armorSet[4].getAccuracy() + "|" + armorSet[4].getPenetration();
 
-        //Show Character info
-        System.out.println(playerCharacter.getImage() + "          Health: "
-                + playerCharacter.getHealth());
-        System.out.println("Status: " + armorSet[0].getImage() + "\n" +
-                "Gold: " + gameState[14] + " || Buff: " + gameState[6]
-                + " || Debuff: " + gameState[7]);
+        displayOutput.generateMainDisplay(gameState, armorSet, playerCharacter);
 
         //Get input from the player
         System.out.println("\nChoose what to do:\n" +
@@ -264,30 +107,32 @@ public class Main {
         Scanner input = new Scanner(System.in);
         String value = input.nextLine();
         System.out.println();
-
-        if(!value.equals("")) {
-            try {
-                switch (Integer.parseInt(value)) {
-                    case 1:
-                        return;
-                    case 2:
-                        enterShop();
-                        break;
-                    case 3:
-                        //TODO: use item
-                        break;
-                    case 4:
-                        System.out.println("Thank you for to playing my game");
-                        System.exit(0);
-                    default:
-                        System.out.println("Incorrect choice.");
-                        break;
+        while (alive) {
+            if (!value.equals("")) {
+                try {
+                    switch (Integer.parseInt(value)) {
+                        case 1:
+                            encounterFloor();
+                            break;
+                        case 2:
+                            shop.enterShop(gameState, potions);
+                            break;
+                        case 3:
+                            //TODO: use item
+                            break;
+                        case 4:
+                            System.out.println("Thank you for to playing my game");
+                            System.exit(0);
+                        default:
+                            System.out.println("Incorrect choice.");
+                            break;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Incorrect choice..");
                 }
-            } catch (Exception e) {
-                System.out.println("Incorrect choice..");
-            }
-        } else
-            System.out.println("Incorrect choice...");
+            } else
+                System.out.println("Incorrect choice...");
+        }
     }
 
     /**
@@ -302,17 +147,11 @@ public class Main {
         boolean floorCleared = false;
         while(!floorCleared) {
             //Print the interaction window
-            System.out.println("Enemy Health: " + floor.getCharacter().getHealth());
-            System.out.println(floor.getCharacter().getEnemyImage());
-            System.out.println(playerCharacter.getImage() + "          Health: "
-                    + playerCharacter.getHealth());
-            System.out.println("Status: " + armorSet[0].getImage() + "\n" +
-                    "Gold: " + gameState[14] + " || Buff: " + gameState[6]
-                    + " || Debuff: " + gameState[7]);
+            displayOutput.generateBattleDisplay(gameState, armorSet, playerCharacter, floor.getCharacter());
 
             //Get input from the player
-            System.out.println("\nChoose what to do:\n" +
-                    "1: Attack || 2: Run || 3: Use Item");
+            String[] options = {"Attack", "Return Home", "Use Item", "Exit Game"};
+            displayOutput.generateOptionsMenu("Choose what to do", options);
             Scanner input = new Scanner(System.in);
             String value = input.nextLine();
             System.out.println();
@@ -364,6 +203,9 @@ public class Main {
                         case 3:
                             //nothing atm
                             break;
+                        case 4:
+                            System.out.println("Thank you for to playing my game");
+                            System.exit(0);
                         default:
                             System.out.println("Incorrect choice.");
                             break;
@@ -390,6 +232,8 @@ public class Main {
         characterBuilder = new CharacterBuilder();
         floorBuilder = new FloorBuilder();
         armorBuilder = new ArmorBuilder();
+        displayOutput = new DisplayOutput();
+        shop = new Shop();
 
         //Select character and add it to the game state
         alive = true;
@@ -401,13 +245,13 @@ public class Main {
         //Set Starting gold
         gameState[14] = "0";
         //Set permanent status
-        gameState[6] = "none";
+        gameState[6] = "None";
         //Set temporary status
-        gameState[7] = "none";
+        gameState[7] = "None";
         //Set Event
         gameState[8] = null;
-        // 0. Health Potion: # remaining
-        // 1.  Potion: # remaining
+        // 0. Health Potion
+        // 1. Elixir Potion
         potions = new int[2];
 
         //Create the armor set
@@ -421,7 +265,7 @@ public class Main {
 
         //The game loop
         while(alive){
-            encounterFloor();
+
         }
 
 
