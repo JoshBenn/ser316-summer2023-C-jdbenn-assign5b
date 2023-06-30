@@ -1,4 +1,6 @@
-package org.rpgMain;
+package org.rpgMain.Character;
+
+import org.rpgMain.Character.Character;
 
 /**
  * Demon Character class.

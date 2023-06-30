@@ -1,4 +1,4 @@
-package org.rpgMain;
+package org.rpgMain.Armor;
 
 import java.util.Random;
 

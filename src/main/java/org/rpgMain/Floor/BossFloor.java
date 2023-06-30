@@ -1,4 +1,4 @@
-package org.rpgMain;
+package org.rpgMain.Floor;
 
 /**
  * Child class from Floor.

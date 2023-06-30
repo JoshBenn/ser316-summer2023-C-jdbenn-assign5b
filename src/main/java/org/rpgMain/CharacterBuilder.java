@@ -1,5 +1,8 @@
 package org.rpgMain;
 
+import org.rpgMain.Character.*;
+import org.rpgMain.Character.Character;
+
 import java.util.Random;
 
 /**

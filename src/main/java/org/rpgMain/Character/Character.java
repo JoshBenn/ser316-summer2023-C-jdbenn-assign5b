@@ -1,4 +1,4 @@
-package org.rpgMain;
+package org.rpgMain.Character;
 
 import java.util.Random;
 

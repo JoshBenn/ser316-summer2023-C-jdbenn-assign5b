@@ -1,15 +1,32 @@
+//Package Declaration
 package org.rpgMain;
-
+//Package Imports
+import org.rpgMain.Armor.*;
+//Other Imports
 import java.util.Random;
 
+/**
+ * General builder class for armor pieces.
+ */
 public class ArmorBuilder {
     private Armor tempItem;
 
+    /**
+     * Generates a random armor item.
+     * @param gameState state of the game
+     * @return armor item
+     */
     public Armor generateItem(String[] gameState) {
         Random random = new Random();
         return generateItem(gameState, random.nextInt(5) + 1);
     }
 
+    /**
+     * Generates a specific armor item.
+     * @param gameState state of the game
+     * @param itemType item to be generated
+     * @return generated item
+     */
     public Armor generateItem(String[] gameState, int itemType) {
         switch(itemType) {
             case 1:

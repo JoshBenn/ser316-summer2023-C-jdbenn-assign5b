@@ -1,5 +1,9 @@
 package org.rpgMain;
 
+import org.rpgMain.Armor.Armor;
+import org.rpgMain.Character.Character;
+import org.rpgMain.Floor.Floor;
+
 import java.util.Scanner;
 
 public class Main {
@@ -117,7 +121,7 @@ public class Main {
             System.out.println(floor.getCharacter().getEnemyImage());
             System.out.println(playerCharacter.getImage() + "          Health: "
                     + playerCharacter.getHealth());
-            System.out.println("Status:\n" +
+            System.out.println("Status: " + armorSet[0].getImage() + "\n" +
                     "Gold: " + gameState[14] + " || Buff: " + gameState[6]
                     + " || Debuff: " + gameState[7]);
 

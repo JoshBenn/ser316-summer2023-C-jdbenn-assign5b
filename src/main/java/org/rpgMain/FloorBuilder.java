@@ -1,5 +1,7 @@
 package org.rpgMain;
 
+import org.rpgMain.Floor.*;
+
 /**
  * General class to build a floor object.
  */

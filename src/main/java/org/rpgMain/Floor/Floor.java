@@ -1,4 +1,7 @@
-package org.rpgMain;
+package org.rpgMain.Floor;
+
+import org.rpgMain.Character.Character;
+import org.rpgMain.CharacterBuilder;
 
 import java.util.Random;
 
