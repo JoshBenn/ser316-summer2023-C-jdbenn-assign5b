@@ -1,4 +1,4 @@
-package org.example;
+package org.rpgMain;
 
 import java.util.Scanner;
 
@@ -193,22 +193,33 @@ public class Main {
      * @param args I'm a pirate
      */
     public static void main(String[] args) {
-         gameState = new String[15];
-         characterBuilder = new CharacterBuilder();
-         floorBuilder = new FloorBuilder();
-         armorBuilder = new ArmorBuilder();
+        //Initialize the game state
+        gameState = new String[15];
+        gameState[5] = "1";
+
+        //Initialize the builders
+        characterBuilder = new CharacterBuilder();
+        floorBuilder = new FloorBuilder();
+        armorBuilder = new ArmorBuilder();
 
         //Select character and add it to the game state
-        playerCharacter = selectCharacter();
         alive = true;
-        //Initialize the game state
+        playerCharacter = selectCharacter();
         gameState[0] = playerCharacter.getCharacterNumber();
         //Set the weapon type
         gameState[1] = playerCharacter.getDamageType();
 
+        //Create the armor set
+        //(0) Weapon, (1) Helmet, (2) Chest, (3) Pants, (4) Boots
+        armorSet = new Armor[5];
+        for(int i = 0; i < armorSet.length; i++)
+            armorSet[i] = armorBuilder.generateItem(gameState, i+1);
+
+        //Start at home
+        returnHome();
+
         //The game loop
         while(alive){
-            returnHome();
             encounterFloor();
         }
 

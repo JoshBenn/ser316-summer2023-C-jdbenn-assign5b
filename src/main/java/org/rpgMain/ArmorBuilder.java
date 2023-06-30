@@ -1,4 +1,4 @@
-package org.example;
+package org.rpgMain;
 
 import java.util.Random;
 

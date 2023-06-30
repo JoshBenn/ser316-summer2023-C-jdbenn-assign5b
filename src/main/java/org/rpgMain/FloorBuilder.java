@@ -1,4 +1,4 @@
-package org.example;
+package org.rpgMain;
 
 /**
  * General class to build a floor object.

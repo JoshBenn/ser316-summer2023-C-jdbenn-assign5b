@@ -1,4 +1,4 @@
-package org.example;
+package org.rpgMain;
 
 /**
  * Human Character class.
