@@ -180,15 +180,15 @@ public class Main {
         //Set Event
         gameState[8] = null;
         //Set weapon stats
-        gameState[9] = "0.05|0";
+        gameState[9] = "0.05|0.01";
         //Set Helmet stats
-        gameState[10] = "0.01|0";
+        gameState[10] = "0.01|0.01";
         //Set Chest stats
-        gameState[11] = "0.02|0";
+        gameState[11] = "0.02|0.01";
         //Set Pants stats
-        gameState[12] = "0.02|0";
+        gameState[12] = "0.02|0.01";
         //Set Boots stats
-        gameState[13] = "0.01|0";
+        gameState[13] = "0.01|0.01";
         //Set Starting gold
         gameState[14] = "0";
 
