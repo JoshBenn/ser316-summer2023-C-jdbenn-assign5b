@@ -8,6 +8,6 @@ import org.rpgMain.Armor.Armor;
  */
 public class Helmet extends Armor {
     public Helmet(String[] gameState) {
-        super(0.01, 0.01, gameState);
+        super(0.01, 0.01, "Helmet", gameState);
     }
 }

@@ -4,6 +4,7 @@ import org.rpgMain.Armor.Armor;
 import org.rpgMain.Character.Character;
 import org.rpgMain.Floor.Floor;
 
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -147,15 +148,15 @@ public class Main {
         boolean floorCleared = false;
         while(!floorCleared) {
             //Print the interaction window
+            System.out.println("-------------------------------------------------------------------------");
             displayOutput.generateBattleDisplay(gameState, armorSet, playerCharacter, floor.getCharacter());
-
-            //Get input from the player
             String[] options = {"Attack", "Return Home", "Use Item", "Exit Game"};
             displayOutput.generateOptionsMenu("Choose what to do", options);
+            //Get user input
             Scanner input = new Scanner(System.in);
             String value = input.nextLine();
             System.out.println();
-
+            //Perform requested action
             if(!value.equals("")) {
                 try {
                     switch (Integer.parseInt(value)) {
@@ -171,14 +172,32 @@ public class Main {
                             //Check if the floor is cleared
                             if(floor.getClearedStatus()) {
                                 floorCleared = true;
-                                //Update the floor Number
-                                gameState[5] = String.valueOf(Integer.parseInt(gameState[5])+1);
+                                //if the floor is a Boss floor, get a new weapon
+                                if(Integer.parseInt(gameState[5])%10 == 0) {
+                                    armorSet[0] = armorBuilder.generateItem(gameState, 1);
+                                    System.out.println("You received a new weapon! " + armorSet[0].getImage());
+                                    System.out.println("New Stats \n" +
+                                            "Acc: " + armorSet[0].getAccuracy() + " Pen: " + armorSet[0].getPenetration());
+                                    System.out.println();
+                                } else if(Integer.parseInt(gameState[5])%5 == 0) {
+                                    //if level x5 floor build a new non-weapon armor piece
+                                    Random random = new Random();
+                                    int choice = random.nextInt(4) + 2;
+                                    armorSet[choice] = armorBuilder.generateItem(gameState, choice);
+                                    System.out.println("You received a new " + armorSet[choice].getArmorType() + "!");
+                                    System.out.println("New Stats \n" +
+                                            "Acc: " + armorSet[0].getAccuracy() + " Pen: " + armorSet[0].getPenetration());
+                                    System.out.println();
+                                }
+
                                 //Update experience
                                 gameState[3] = String.valueOf(Integer.parseInt(gameState[3]) + floor.getExperienceGain());
                                 playerCharacter.gainExperience(Integer.parseInt(gameState[3]));
                                 //Get ze gold
                                 gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) + floor.getGoldGain());
-                                int rewardChance = floor.clearFloor();
+
+                                //Update the floor Number
+                                gameState[5] = String.valueOf(Integer.parseInt(gameState[5])+1);
                             } else {
                                 //If the enemy is not killed, player takes damage
                                 int enemyDamage = floor.getCharacter().doDamage(gameState);
@@ -192,9 +211,14 @@ public class Main {
                                     alive = false;
                                     System.out.println("You have died!!!\n" +
                                             "GAME OVER");
+                                    System.exit(0);
                                 }
                                 //Update the game state
                                 gameState[4] = String.valueOf(playerCharacter.getHealth());
+
+                                //If the player is below 15% hp
+                                if(playerCharacter.getHealth() < (playerCharacter.getLevel()*10)*0.15)
+                                    returnHome();
                             }
                             break;
                         case 2:
@@ -262,13 +286,6 @@ public class Main {
 
         //Start at home
         returnHome();
-
-        //The game loop
-        while(alive){
-
-        }
-
-
 
         System.out.println(playerCharacter.getImage());
     }

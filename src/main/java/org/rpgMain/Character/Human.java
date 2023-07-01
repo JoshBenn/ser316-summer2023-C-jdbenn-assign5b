@@ -8,7 +8,7 @@ import org.rpgMain.Character.Character;
  */
 public class Human extends Character {
     public Human() {
-        super(0.5, 0.5, 3, "Either", "1");
+        super(0.5, 0.5, 3, "Either", "3");
     }
 
     /**

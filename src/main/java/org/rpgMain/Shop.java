@@ -2,6 +2,10 @@ package org.rpgMain;
 
 import java.util.Scanner;
 
+/**
+ * General shop management system.
+ * Start at the entrance and go to each section as necessary.
+ */
 public class Shop {
 
     /**

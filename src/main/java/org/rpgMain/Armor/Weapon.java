@@ -8,7 +8,7 @@ import org.rpgMain.Armor.Armor;
  */
 public class Weapon extends Armor {
     public Weapon(String[] gameState) {
-        super(0.05, 0.01, gameState);
+        super(0.05, 0.01, "Weapon", gameState);
     }
 
     /**

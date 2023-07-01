@@ -8,6 +8,6 @@ import org.rpgMain.Armor.Armor;
  */
 public class Chest extends Armor {
     public Chest(String[] gameState) {
-        super(0.02, 0.01, gameState);
+        super(0.02, 0.01, "Chest Piece", gameState);
     }
 }
