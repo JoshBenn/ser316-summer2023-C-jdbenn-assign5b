@@ -7,6 +7,10 @@ import org.rpgMain.Floor.Floor;
 import java.util.Random;
 import java.util.Scanner;
 
+//Individual characters, floors, and armor are Decorators
+//Builder patterns exist for Armor, Characters, and Floors
+//The main program/UI is maintained through a gameState system
+//Strategy patterns are implemented in most other pattern types
 
 public class Main {
     // 0. Character Type [(1) Cat, (2) Demon, (3) Human]
@@ -33,6 +37,7 @@ public class Main {
     static ArmorBuilder armorBuilder;
     static FloorBuilder floorBuilder;
     static Shop shop;
+    static boolean bot;
     static DisplayOutput displayOutput;
     static Armor[] armorSet;
     static int[] potions;
@@ -41,7 +46,7 @@ public class Main {
      * Asks the player for an input and creates the character.
      * @return a CharacterBuilder object
      */
-    private static Character selectCharacter() {
+    private static Character selectCharacter() throws InterruptedException {
         //Ask which class the player will play as
         boolean characterNotSelected = true;
         int characterSelection = 0;
@@ -49,7 +54,13 @@ public class Main {
             Scanner input = new Scanner(System.in);
             System.out.println("Please choose your class:\n" +
                     "1: Cat || 2: Demon || 3: Human");
-            String value = input.nextLine();
+            String value;
+            if(bot) {
+                value = "1";
+                Thread.sleep(1000);
+            } else
+                value = input.nextLine();
+
 
             if(!value.equals("")) {
                 try {
@@ -83,7 +94,7 @@ public class Main {
     /**
      * Returns the player to the origin floor and resets a few values.
      */
-    public static void returnHome() {
+    public static void returnHome() throws InterruptedException {
         //Update Game State
         //Set the level
         playerCharacter.setLevel();
@@ -106,7 +117,12 @@ public class Main {
         System.out.println("\nChoose what to do:\n" +
                 "1: Enter Tower || 2: Enter Shop || 3: Use Item || 4: Exit Game");
         Scanner input = new Scanner(System.in);
-        String value = input.nextLine();
+        String value;
+        if(bot) {
+            value = "1";
+            Thread.sleep(1000);
+        } else
+            value = input.nextLine();
         System.out.println();
         while (alive) {
             if (!value.equals("")) {
@@ -178,7 +194,7 @@ public class Main {
     /**
      * General method mediating player interaction with the floor.
      */
-    private static void encounterFloor() {
+    private static void encounterFloor() throws InterruptedException {
         Floor floor = floorBuilder.generateFloor(gameState);
         System.out.println("#########################################################################\n" +
                            "     Floor: " + gameState[5] + "\n");
@@ -193,7 +209,15 @@ public class Main {
             displayOutput.generateOptionsMenu("Choose what to do", options);
             //Get user input
             Scanner input = new Scanner(System.in);
-            String value = input.nextLine();
+            String value;
+            if(bot) {
+                if(playerCharacter.getHealth() < 0.2*playerCharacter.getLevel()*10)
+                    value = "2";
+                else
+                    value = "1";
+                Thread.sleep(1000);
+            } else
+                value = input.nextLine();
             System.out.println();
             //Perform requested action
             if(!value.equals("")) {
@@ -214,6 +238,7 @@ public class Main {
                                 //if the floor is a Boss floor, get a new weapon
                                 if(Integer.parseInt(gameState[5])%10 == 0) {
                                     armorSet[0] = armorBuilder.generateItem(gameState, 1);
+                                    gameState[9] = armorSet[0].getAccuracy() + "|" + armorSet[0].getPenetration();
                                     System.out.println("You received a new weapon! " + armorSet[0].getImage());
                                     System.out.println("New Stats \n" +
                                             "Acc: " + armorSet[0].getAccuracy() + " Pen: " + armorSet[0].getPenetration());
@@ -325,7 +350,7 @@ public class Main {
      * main.
      * @param args I'm a pirate
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //Initialize the game state
         gameState = new String[15];
         gameState[5] = "1";
@@ -336,6 +361,33 @@ public class Main {
         armorBuilder = new ArmorBuilder();
         displayOutput = new DisplayOutput();
         shop = new Shop();
+
+        //Determine if auto-play
+        //Get input from the player
+        System.out.println("\nWould you like to auto-play?\n" +
+                "1: Yes || 2: No ");
+        Scanner input = new Scanner(System.in);
+        String value = input.nextLine();
+        System.out.println();
+        if (!value.equals("")) {
+            try {
+                switch (Integer.parseInt(value)) {
+                    case 1:
+                        bot = true;
+                        break;
+                    case 2:
+                        bot = false;
+                        break;
+                    default:
+                        System.out.println("Incorrect choice.");
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println("Incorrect choice..");
+            }
+        } else
+            System.out.println("Incorrect choice...");
+
 
         //Select character and add it to the game state
         alive = true;
@@ -361,6 +413,8 @@ public class Main {
         armorSet = new Armor[5];
         for(int i = 0; i < armorSet.length; i++)
             armorSet[i] = armorBuilder.generateItem(gameState, i+1);
+
+
 
         //Start at home
         returnHome();
