@@ -105,6 +105,8 @@ public class Main {
         //Set Current Health
         playerCharacter.setHealth();
         gameState[4] = String.valueOf(playerCharacter.getHealth());
+        //Set the floor
+        gameState[5] = "1";
         //Set Armor stats
         gameState[9] = armorSet[0].getAccuracy() + ":" + armorSet[0].getPenetration();
         gameState[10] = armorSet[1].getAccuracy() + ":" + armorSet[1].getPenetration();
@@ -209,7 +211,7 @@ public class Main {
             Scanner input = new Scanner(System.in, StandardCharsets.UTF_8);
             String value;
             if (bot) {
-                if (playerCharacter.getHealth() < 0.2 * playerCharacter.getLevel() * 10)
+                if (playerCharacter.getHealth() <= 0.5 * playerCharacter.getLevel() * 10)
                     value = "2";
                 else
                     value = "1";
@@ -243,8 +245,8 @@ public class Main {
                             } else if (Integer.parseInt(gameState[5]) % 5 == 0) {
                                 //if level x5 floor build a new non-weapon armor piece
                                 Random random = new Random();
-                                int choice = random.nextInt(4) + 2;
-                                armorSet[choice] = armorBuilder.generateItem(gameState, choice);
+                                int choice = random.nextInt(4) + 1;
+                                armorSet[choice] = armorBuilder.generateItem(gameState, choice + 1);
                                 gameState[choice + 9] = armorSet[choice].getAccuracy() + ":" + armorSet[choice].getPenetration();
                                 System.out.println("You received a new " + armorSet[choice].getArmorType() + "!");
                                 System.out.println("New Stats \n"
@@ -262,7 +264,8 @@ public class Main {
                             gameState[5] = String.valueOf(Integer.parseInt(gameState[5]) + 1);
                         } else {
                             //If the enemy is not killed, player takes damage
-                            int enemyDamage = floor.getCharacter().doDamage(gameState);
+                            int enemyDamage = floor.getCharacter().doEnemyDamage(
+                                    Integer.parseInt(gameState[5]), floor.getFloorType());
                             playerCharacter.setHealth(-1 * enemyDamage);
                             if (enemyDamage == 0)
                                 System.out.println("You dodge the attack!\n\n\n");

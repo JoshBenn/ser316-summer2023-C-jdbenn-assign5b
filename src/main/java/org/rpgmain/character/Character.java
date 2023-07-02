@@ -150,6 +150,18 @@ public class Character {
         return (int) Math.ceil(penetration * this.potency);
     }
 
+    public int doEnemyDamage(int floorNumber, int floorType) {
+        double accuracy = ((double) floorNumber / 100) + this.accuracy;
+        double penetration = this.penetration;
+        Random random = new Random();
+        accuracy = 100 - accuracy * 100;
+        int chance = random.nextInt(100) + 1;
+        if (chance < accuracy)
+            return 0;
+
+        return (int) Math.ceil(penetration * this.potency);
+    }
+
     /**
      * Provides the level of the character.
      * @return character level
