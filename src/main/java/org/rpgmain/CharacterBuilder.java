@@ -37,7 +37,7 @@ public class CharacterBuilder {
                 tempCharacter = new Human();
                 break;
             default:
-                System.out.print("Incorrect Option");
+                tempCharacter = null;
                 break;
         }
         return tempCharacter;

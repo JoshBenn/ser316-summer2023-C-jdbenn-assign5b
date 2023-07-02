@@ -73,4 +73,12 @@ public class Floor {
         return this.floorNumber * 100 * this.floorType;
     }
 
+    /**
+     * Gets the type of floor it is.
+     * @return int floorType
+     */
+    public int getFloorType() {
+        return this.floorType;
+    }
+
 }
