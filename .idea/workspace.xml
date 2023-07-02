@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec783eb3-7222-4a3a-8760-e83b3d44869c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Armor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Boots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Chest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Helmet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Helmet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Pants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Pants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Character/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgMain/Character/Human.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/DisplayOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgMain/DisplayOutput.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgMain/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgMain/Shop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,16 +58,5 @@
       <updated>1688023980458</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Armor.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

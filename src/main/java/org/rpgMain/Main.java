@@ -119,7 +119,46 @@ public class Main {
                             shop.enterShop(gameState, potions);
                             break;
                         case 3:
-                            //TODO: use item
+                            //Provide options
+                            String[] options = new String[]{"Use Health Potion", "Use Elixir Potion", "Use Scroll", "Return"};
+                            displayOutput.generateOptionsMenu("Choose an item", options);
+                            //Get user input
+                            Scanner input1 = new Scanner(System.in);
+                            String value1 = input1.nextLine();
+                            System.out.println();
+                            if(!value1.equals("")) {
+                                try {
+                                    switch (Integer.parseInt(value1)) {
+                                        case 1:
+                                            if(potions[0] == 0) {
+                                                System.out.println("You do not have enough of those.");
+                                                break;
+                                            }
+                                            playerCharacter.setHealth();;
+                                            potions[0]--;
+                                            break;
+                                        case 2:
+                                            if(potions[1] == 0) {
+                                                System.out.println("You do not have enough of those.");
+                                                break;
+                                            }
+                                            gameState[7] = "None";
+                                            potions[1]--;
+                                            break;
+                                        case 3:
+                                            //lel
+                                            break;
+                                        case 4:
+                                            return;
+                                        default:
+                                            System.out.println("Incorrect choice.");
+                                            break;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Incorrect choice..");
+                                }
+                            } else
+                                System.out.println("Incorrect choice...");
                             break;
                         case 4:
                             System.out.println("Thank you for to playing my game");
@@ -225,7 +264,46 @@ public class Main {
                             returnHome();
                             break;
                         case 3:
-                            //nothing atm
+                            //Provide options
+                            options = new String[]{"Use Health Potion", "Use Elixir Potion", "Use Scroll", "Return"};
+                            displayOutput.generateOptionsMenu("Choose an item", options);
+                            //Get user input
+                            Scanner input1 = new Scanner(System.in);
+                            String value1 = input1.nextLine();
+                            System.out.println();
+                            if(!value1.equals("")) {
+                                try {
+                                    switch (Integer.parseInt(value1)) {
+                                        case 1:
+                                            if(potions[0] == 0) {
+                                                System.out.println("You do not have enough of those.");
+                                                break;
+                                            }
+                                            playerCharacter.setHealth();;
+                                            potions[0]--;
+                                            break;
+                                        case 2:
+                                            if(potions[1] == 0) {
+                                                System.out.println("You do not have enough of those.");
+                                                break;
+                                            }
+                                            gameState[7] = "None";
+                                            potions[1]--;
+                                            break;
+                                        case 3:
+                                            //lel
+                                            break;
+                                        case 4:
+                                            return;
+                                        default:
+                                            System.out.println("Incorrect choice.");
+                                            break;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Incorrect choice..");
+                                }
+                            } else
+                                System.out.println("Incorrect choice...");
                             break;
                         case 4:
                             System.out.println("Thank you for to playing my game");
