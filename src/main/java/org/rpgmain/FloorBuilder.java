@@ -14,7 +14,7 @@ public class FloorBuilder {
      * @param gameState the state of the game
      */
     public Floor generateFloor(String[] gameState) {
-        int floorNumber = Integer.valueOf(gameState[5]);
+        int floorNumber = Integer.parseInt(gameState[5]);
         if (floorNumber % 10 == 0)
             tempFloor = new BossFloor(floorNumber);
         else if (floorNumber % 5 == 0)

@@ -19,8 +19,8 @@ public class Armor {
      */
     public Armor(double accuracy, double penetration, String armorType, String[] gameState) {
         int floorNumber = Integer.parseInt(gameState[5]);
-        this.accuracy = floorNumber / 5 + accuracy;
-        this.penetration = floorNumber / 5 + penetration;
+        this.accuracy = (double) floorNumber / 5 + accuracy;
+        this.penetration = (double) floorNumber / 5 + penetration;
         this.armorType = armorType;
         //set weapon type
         if (gameState[0].equals("3")) {

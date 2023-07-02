@@ -1,5 +1,6 @@
 package org.rpgmain;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 /**
@@ -14,37 +15,33 @@ public class Shop {
      * @param gameState String array of the gameState
      * @param potions int array of all potions
      */
-    public void enterShop(String[] gameState, int[] potions) {
+    public void enterShop(String[] gameState, int[] potions) throws Exception {
         //Output the options
         DisplayOutput displayOutput = new DisplayOutput();
         String[] options = {"Buffs", "Potions", "Scrolls", "Exit Shop"};
         displayOutput.generateOptionsMenu("Please choose", options);
         //Take input from the player
-        Scanner shopInput = new Scanner(System.in);
+        Scanner shopInput = new Scanner(System.in, StandardCharsets.UTF_8);
         String shopValue = shopInput.nextLine();
         System.out.println();
         //Perform requested action
         if (!shopValue.equals("")) {
-            try {
-                switch (Integer.parseInt(shopValue)) {
-                    case 1:
-                        purchaseBuffs(gameState, potions);
-                        break;
-                    case 2:
-                        purchasePotions(gameState, potions);
-                        break;
-                    case 3:
-                        purchaseScrolls(gameState, potions);
-                        break;
-                    case 4:
-                        Main.returnHome();
-                        break;
-                    default:
-                        System.out.println("Incorrect choice.");
-                        break;
-                }
-            } catch (Exception e) {
-                System.out.println("Incorrect choice..");
+            switch (Integer.parseInt(shopValue)) {
+                case 1:
+                    purchaseBuffs(gameState, potions);
+                    break;
+                case 2:
+                    purchasePotions(gameState, potions);
+                    break;
+                case 3:
+                    purchaseScrolls(gameState, potions);
+                    break;
+                case 4:
+                    Main.returnHome();
+                    break;
+                default:
+                    System.out.println("Incorrect choice.");
+                    break;
             }
         } else
             System.out.println("Incorrect choice...");
@@ -60,7 +57,7 @@ public class Shop {
         String[] options = {"Empowered", "Hastened", "Fortified", "Return"};
         displayOutput.generateOptionsMenu("Choose a buff (10,000 each):", options);
         //Take in user input
-        Scanner shopInput = new Scanner(System.in);
+        Scanner shopInput = new Scanner(System.in, StandardCharsets.UTF_8);
         String shopValue = shopInput.nextLine();
         System.out.println();
         //Perform the requested action
@@ -115,7 +112,7 @@ public class Shop {
         String[] options = {"Health", "Elixir", "Lovers", "Return"};
         displayOutput.generateOptionsMenu("Choose a potion (200 each):", options);
         //Take in user input
-        Scanner shopInput = new Scanner(System.in);
+        Scanner shopInput = new Scanner(System.in, StandardCharsets.UTF_8);
         String shopValue = shopInput.nextLine();
         System.out.println();
         //Perform the requested action
@@ -170,7 +167,7 @@ public class Shop {
         String[] options = {"+EXP", "+Accuracy", "+Gold", "Return"};
         displayOutput.generateOptionsMenu("Choose a scroll (100,000 each):", options);
         //Take in user input
-        Scanner shopInput = new Scanner(System.in);
+        Scanner shopInput = new Scanner(System.in, StandardCharsets.UTF_8);
         String shopValue = shopInput.nextLine();
         System.out.println();
         //perform the requested action

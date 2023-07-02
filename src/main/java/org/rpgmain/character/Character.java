@@ -87,7 +87,7 @@ public class Character {
      * @param floorNumber level of floor in the tower
      */
     public void setEnemyAccuracy(int floorNumber) {
-        this.accuracy = floorNumber / 100;
+        this.accuracy = (double) floorNumber / 100;
     }
 
     /**
@@ -135,9 +135,9 @@ public class Character {
         double penetration = this.penetration;
         //get the info from the current state of the game
         for (int i = 9; i < gameState.length - 1; i++) {
-            String[] armorStats = gameState[i].split("|");
-            accuracy += Double.valueOf(armorStats[0]);
-            penetration += Double.valueOf(armorStats[2]);
+            String[] armorStats = gameState[i].split(":");
+            accuracy += Double.parseDouble(armorStats[0]);
+            penetration += Double.parseDouble(armorStats[2]);
         }
         //Accuracy check
         Random random = new Random();

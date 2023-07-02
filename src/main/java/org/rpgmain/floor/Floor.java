@@ -1,7 +1,5 @@
 package org.rpgmain.floor;
 
-import java.util.Random;
-
 import org.rpgmain.CharacterBuilder;
 import org.rpgmain.character.Character;
 
@@ -27,8 +25,6 @@ public class Floor {
         this.cleared = false;
 
         //Create a randomly generated enemy from the available choices
-        Random random = new Random();
-        int enemyGenerator = random.nextInt(3) + 1;
         CharacterBuilder characterBuilder = new CharacterBuilder();
         enemy = characterBuilder.generateCharacter();
         enemy.setEnemyHealth(floorNumber * floorType);
@@ -77,13 +73,4 @@ public class Floor {
         return this.floorNumber * 100 * this.floorType;
     }
 
-    /**
-     * Provides a random reward for clearing the floor.
-     * @return (0) Shop, (1) Health pot
-     */
-    public int clearFloor() {
-        System.out.println("You have slain the evil creature!");
-        Random random = new Random();
-        return random.nextInt(2);
-    }
 }
