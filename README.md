@@ -7,7 +7,7 @@ Assignment 5
     Strategy
 
 Screencast link:
-- https://youtu.be/eQA_o9Qq6fo
+- https://youtu.be/jVKW8mHFY8Y
     
 Intended direction:
 - Player Character:
