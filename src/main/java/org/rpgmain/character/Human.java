@@ -1,6 +1,4 @@
-package org.rpgMain.Character;
-
-import org.rpgMain.Character.Character;
+package org.rpgmain.character;
 
 /**
  * Human Character class.
@@ -17,9 +15,9 @@ public class Human extends Character {
      */
     @Override
     public String getImage() {
-        return  "    ,,,,\n" +
-                "   ( o.o) \n" +
-                "   (  >) ";
+        return    "    ,,,,\n"
+                + "   ( o.o) \n"
+                + "   (  >) ";
     }
 
     /**
@@ -28,8 +26,8 @@ public class Human extends Character {
      */
     @Override
     public String getEnemyImage() {
-        return  "                        ,,,,\n" +
-                "                       (o.o ) \n" +
-                "                        (<  ) ";
+        return    "                        ,,,,\n"
+                + "                       (o.o ) \n"
+                + "                        (<  ) ";
     }
 }

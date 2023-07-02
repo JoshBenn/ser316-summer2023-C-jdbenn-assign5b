@@ -1,4 +1,4 @@
-package org.rpgMain;
+package org.rpgmain;
 
 import java.util.Scanner;
 
@@ -38,6 +38,7 @@ public class Shop {
                         break;
                     case 4:
                         Main.returnHome();
+                        break;
                     default:
                         System.out.println("Incorrect choice.");
                         break;
@@ -63,11 +64,11 @@ public class Shop {
         String shopValue = shopInput.nextLine();
         System.out.println();
         //Perform the requested action
-        if(!shopValue.equals("")) {
+        if (!shopValue.equals("")) {
             try {
                 switch (Integer.parseInt(shopValue)) {
                     case 1:
-                        if(Integer.parseInt(gameState[14]) < 10000) {
+                        if (Integer.parseInt(gameState[14]) < 10000) {
                             System.out.println("You do not have enough gold! :(");
                             return;
                         }
@@ -75,7 +76,7 @@ public class Shop {
                         gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 10000);
                         break;
                     case 2:
-                        if(Integer.parseInt(gameState[14]) < 10000) {
+                        if (Integer.parseInt(gameState[14]) < 10000) {
                             System.out.println("You do not have enough gold! :(");
                             return;
                         }
@@ -83,7 +84,7 @@ public class Shop {
                         gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 10000);
                         break;
                     case 3:
-                        if(Integer.parseInt(gameState[14]) < 10000) {
+                        if (Integer.parseInt(gameState[14]) < 10000) {
                             System.out.println("You do not have enough gold! :(");
                             return;
                         }
@@ -118,11 +119,11 @@ public class Shop {
         String shopValue = shopInput.nextLine();
         System.out.println();
         //Perform the requested action
-        if(!shopValue.equals("")) {
+        if (!shopValue.equals("")) {
             try {
                 switch (Integer.parseInt(shopValue)) {
                     case 1:
-                        if(Integer.parseInt(gameState[14]) < 200) {
+                        if (Integer.parseInt(gameState[14]) < 200) {
                             System.out.println("You do not have enough gold! :(");
                             return;
                         }
@@ -130,7 +131,7 @@ public class Shop {
                         gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 200);
                         break;
                     case 2:
-                        if(Integer.parseInt(gameState[14]) < 200) {
+                        if (Integer.parseInt(gameState[14]) < 200) {
                             System.out.println("You do not have enough gold! :(");
                             return;
                         }
@@ -138,7 +139,7 @@ public class Shop {
                         gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 200);
                         break;
                     case 3:
-                        if(Integer.parseInt(gameState[14]) < 200) {
+                        if (Integer.parseInt(gameState[14]) < 200) {
                             System.out.println("You do not have enough gold! :(");
                             return;
                         }
@@ -173,11 +174,11 @@ public class Shop {
         String shopValue = shopInput.nextLine();
         System.out.println();
         //perform the requested action
-        if(!shopValue.equals("")) {
+        if (!shopValue.equals("")) {
             try {
                 switch (Integer.parseInt(shopValue)) {
                     case 1:
-                        if(Integer.parseInt(gameState[14]) < 100000) {
+                        if (Integer.parseInt(gameState[14]) < 100000) {
                             System.out.println("You do not have enough gold! :(");
                             return;
                         }
@@ -185,7 +186,7 @@ public class Shop {
                         gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 100000);
                         break;
                     case 2:
-                        if(Integer.parseInt(gameState[14]) < 100000) {
+                        if (Integer.parseInt(gameState[14]) < 100000) {
                             System.out.println("You do not have enough gold! :(");
                             return;
                         }
@@ -193,7 +194,7 @@ public class Shop {
                         gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) - 100000);
                         break;
                     case 3:
-                        if(Integer.parseInt(gameState[14]) < 100000) {
+                        if (Integer.parseInt(gameState[14]) < 100000) {
                             System.out.println("You do not have enough gold! :(");
                             return;
                         }

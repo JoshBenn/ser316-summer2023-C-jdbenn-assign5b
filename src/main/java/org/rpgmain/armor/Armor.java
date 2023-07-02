@@ -1,4 +1,4 @@
-package org.rpgMain.Armor;
+package org.rpgmain.armor;
 
 import java.util.Random;
 
@@ -6,8 +6,10 @@ import java.util.Random;
  * Parent class for Armor items.
  */
 public class Armor {
-    private final double accuracy, penetration;
-    private final String weaponType, armorType;
+    private final double accuracy;
+    private final double penetration;
+    private final String weaponType;
+    private final String armorType;
 
     /**
      * General constructor.
@@ -17,16 +19,15 @@ public class Armor {
      */
     public Armor(double accuracy, double penetration, String armorType, String[] gameState) {
         int floorNumber = Integer.parseInt(gameState[5]);
-        this.accuracy = floorNumber/5 + accuracy;
-        this.penetration = floorNumber/5 + penetration;
+        this.accuracy = floorNumber / 5 + accuracy;
+        this.penetration = floorNumber / 5 + penetration;
         this.armorType = armorType;
         //set weapon type
-        if(gameState[0].equals("3")) {
+        if (gameState[0].equals("3")) {
             Random random = new Random();
             int choice = random.nextInt(2);
             this.weaponType = (choice < 1) ? "Physical" : "Magic";
-        }
-        else
+        } else
             this.weaponType = gameState[1];
     }
 
@@ -34,29 +35,39 @@ public class Armor {
      * When the armor type is created, explains what it is.
      * @return String armorType.
      */
-    public String getArmorType() { return this.armorType; }
+    public String getArmorType() {
+        return this.armorType;
+    }
 
     /**
      * For getting the accuracy of the item.
      * @return double accuracy value
      */
-    public double getAccuracy() { return this.accuracy; }
+    public double getAccuracy() {
+        return this.accuracy;
+    }
 
     /**
      * For getting the penetration value of the item.
      * @return double penetration value
      */
-    public double getPenetration() { return this.penetration; }
+    public double getPenetration() {
+        return this.penetration;
+    }
 
     /**
      * For getting the weapon type of the item.
      * @return String type of the weapon
      */
-    public String getWeaponType() { return this.weaponType; }
+    public String getWeaponType() {
+        return this.weaponType;
+    }
 
     /**
      * Prints an image of the item (weapon).
      * @return String of characters
      */
-    public String getImage() { return null; }
+    public String getImage() {
+        return null;
+    }
 }

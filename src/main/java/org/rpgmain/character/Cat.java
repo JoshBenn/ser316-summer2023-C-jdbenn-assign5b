@@ -1,6 +1,4 @@
-package org.rpgMain.Character;
-
-import org.rpgMain.Character.Character;
+package org.rpgmain.character;
 
 /**
  * Cat character class.
@@ -18,9 +16,9 @@ public class Cat extends Character {
      */
     @Override
     public String getImage() {
-        return  "    /\\/\\\n" +
-                "   ( o.o) \n" +
-                "  \\(  >) ";
+        return  "    /\\/\\\n"
+              + "   ( o.o) \n"
+              + "  \\(  >) ";
     }
 
     /**
@@ -29,8 +27,8 @@ public class Cat extends Character {
      */
     @Override
     public String getEnemyImage() {
-        return  "                        /\\/\\\n" +
-                "                       (o.o ) \n" +
-                "                        (<  )/ ";
+        return  "                        /\\/\\\n"
+              + "                       (o.o ) \n"
+              + "                        (<  )/ ";
     }
 }

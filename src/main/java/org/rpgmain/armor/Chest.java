@@ -1,6 +1,4 @@
-package org.rpgMain.Armor;
-
-import org.rpgMain.Armor.Armor;
+package org.rpgmain.armor;
 
 /**
  * Armor child class.

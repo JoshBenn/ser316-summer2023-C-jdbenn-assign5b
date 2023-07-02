@@ -1,11 +1,11 @@
-package org.rpgMain;
-
-import org.rpgMain.Armor.Armor;
-import org.rpgMain.Character.Character;
-import org.rpgMain.Floor.Floor;
+package org.rpgmain;
 
 import java.util.Random;
 import java.util.Scanner;
+
+import org.rpgmain.armor.Armor;
+import org.rpgmain.character.Character;
+import org.rpgmain.floor.Floor;
 
 //Individual characters, floors, and armor are Decorators
 //Builder patterns exist for Armor, Characters, and Floors
@@ -50,19 +50,19 @@ public class Main {
         //Ask which class the player will play as
         boolean characterNotSelected = true;
         int characterSelection = 0;
-        while(characterNotSelected) {
+        while (characterNotSelected) {
             Scanner input = new Scanner(System.in);
-            System.out.println("Please choose your class:\n" +
-                    "1: Cat || 2: Demon || 3: Human");
+            System.out.println("Please choose your class:\n"
+                             + "1: Cat || 2: Demon || 3: Human");
             String value;
-            if(bot) {
+            if (bot) {
                 value = "1";
                 Thread.sleep(1000);
             } else
                 value = input.nextLine();
 
 
-            if(!value.equals("")) {
+            if (!value.equals("")) {
                 try {
                     switch (Integer.parseInt(value)) {
                         case 1:
@@ -114,11 +114,11 @@ public class Main {
         displayOutput.generateMainDisplay(gameState, armorSet, playerCharacter);
 
         //Get input from the player
-        System.out.println("\nChoose what to do:\n" +
-                "1: Enter Tower || 2: Enter Shop || 3: Use Item || 4: Exit Game");
+        System.out.println("\nChoose what to do:\n"
+                         + "1: Enter Tower || 2: Enter Shop || 3: Use Item || 4: Exit Game");
         Scanner input = new Scanner(System.in);
         String value;
-        if(bot) {
+        if (bot) {
             value = "1";
             Thread.sleep(1000);
         } else
@@ -142,11 +142,11 @@ public class Main {
                             Scanner input1 = new Scanner(System.in);
                             String value1 = input1.nextLine();
                             System.out.println();
-                            if(!value1.equals("")) {
+                            if (!value1.equals("")) {
                                 try {
                                     switch (Integer.parseInt(value1)) {
                                         case 1:
-                                            if(potions[0] == 0) {
+                                            if (potions[0] == 0) {
                                                 System.out.println("You do not have enough of those.");
                                                 break;
                                             }
@@ -154,7 +154,7 @@ public class Main {
                                             potions[0]--;
                                             break;
                                         case 2:
-                                            if(potions[1] == 0) {
+                                            if (potions[1] == 0) {
                                                 System.out.println("You do not have enough of those.");
                                                 break;
                                             }
@@ -179,6 +179,7 @@ public class Main {
                         case 4:
                             System.out.println("Thank you for to playing my game");
                             System.exit(0);
+                            break;
                         default:
                             System.out.println("Incorrect choice.");
                             break;
@@ -196,12 +197,12 @@ public class Main {
      */
     private static void encounterFloor() throws InterruptedException {
         Floor floor = floorBuilder.generateFloor(gameState);
-        System.out.println("#########################################################################\n" +
-                           "     Floor: " + gameState[5] + "\n");
+        System.out.println("#########################################################################\n"
+                         + "     Floor: " + gameState[5] + "\n");
         System.out.println("You have encountered an evil creature! \n");
 
         boolean floorCleared = false;
-        while(!floorCleared) {
+        while (!floorCleared) {
             //Print the interaction window
             System.out.println("-------------------------------------------------------------------------");
             displayOutput.generateBattleDisplay(gameState, armorSet, playerCharacter, floor.getCharacter());
@@ -210,8 +211,8 @@ public class Main {
             //Get user input
             Scanner input = new Scanner(System.in);
             String value;
-            if(bot) {
-                if(playerCharacter.getHealth() < 0.2*playerCharacter.getLevel()*10)
+            if (bot) {
+                if (playerCharacter.getHealth() < 0.2 * playerCharacter.getLevel() * 10)
                     value = "2";
                 else
                     value = "1";
@@ -220,37 +221,37 @@ public class Main {
                 value = input.nextLine();
             System.out.println();
             //Perform requested action
-            if(!value.equals("")) {
+            if (!value.equals("")) {
                 try {
                     switch (Integer.parseInt(value)) {
                         case 1:
                             //Calculate player damage to the enemy
                             int playerDamage = playerCharacter.doDamage(gameState);
                             floor.doDamage(playerDamage);
-                            if(playerDamage == 0)
+                            if (playerDamage == 0)
                                 System.out.println("The evil creature dodges the attack!");
                             else
                                 System.out.println("The evil creature takes " + playerDamage + " damage!\n");
 
                             //Check if the floor is cleared
-                            if(floor.getClearedStatus()) {
+                            if (floor.getClearedStatus()) {
                                 floorCleared = true;
                                 //if the floor is a Boss floor, get a new weapon
-                                if(Integer.parseInt(gameState[5])%10 == 0) {
+                                if (Integer.parseInt(gameState[5]) % 10 == 0) {
                                     armorSet[0] = armorBuilder.generateItem(gameState, 1);
                                     gameState[9] = armorSet[0].getAccuracy() + "|" + armorSet[0].getPenetration();
                                     System.out.println("You received a new weapon! " + armorSet[0].getImage());
-                                    System.out.println("New Stats \n" +
-                                            "Acc: " + armorSet[0].getAccuracy() + " Pen: " + armorSet[0].getPenetration());
+                                    System.out.println("New Stats \n"
+                                            + "Acc: " + armorSet[0].getAccuracy() + " Pen: " + armorSet[0].getPenetration());
                                     System.out.println();
-                                } else if(Integer.parseInt(gameState[5])%5 == 0) {
+                                } else if (Integer.parseInt(gameState[5]) % 5 == 0) {
                                     //if level x5 floor build a new non-weapon armor piece
                                     Random random = new Random();
                                     int choice = random.nextInt(4) + 2;
                                     armorSet[choice] = armorBuilder.generateItem(gameState, choice);
                                     System.out.println("You received a new " + armorSet[choice].getArmorType() + "!");
-                                    System.out.println("New Stats \n" +
-                                            "Acc: " + armorSet[0].getAccuracy() + " Pen: " + armorSet[0].getPenetration());
+                                    System.out.println("New Stats \n"
+                                            + "Acc: " + armorSet[0].getAccuracy() + " Pen: " + armorSet[0].getPenetration());
                                     System.out.println();
                                 }
 
@@ -261,27 +262,27 @@ public class Main {
                                 gameState[14] = String.valueOf(Integer.parseInt(gameState[14]) + floor.getGoldGain());
 
                                 //Update the floor Number
-                                gameState[5] = String.valueOf(Integer.parseInt(gameState[5])+1);
+                                gameState[5] = String.valueOf(Integer.parseInt(gameState[5]) + 1);
                             } else {
                                 //If the enemy is not killed, player takes damage
                                 int enemyDamage = floor.getCharacter().doDamage(gameState);
-                                playerCharacter.setHealth(-1*enemyDamage);
-                                if(enemyDamage == 0)
+                                playerCharacter.setHealth(-1 * enemyDamage);
+                                if (enemyDamage == 0)
                                     System.out.println("You dodge the attack!\n\n\n");
                                 else
                                     System.out.println("You take " + enemyDamage + " damage!\n\n\n");
                                 //If the player died
-                                if(playerCharacter.getHealth() <= 0) {
+                                if (playerCharacter.getHealth() <= 0) {
                                     alive = false;
-                                    System.out.println("You have died!!!\n" +
-                                            "GAME OVER");
+                                    System.out.println("You have died!!!\n"
+                                            + "GAME OVER");
                                     System.exit(0);
                                 }
                                 //Update the game state
                                 gameState[4] = String.valueOf(playerCharacter.getHealth());
 
                                 //If the player is below 15% hp
-                                if(playerCharacter.getHealth() < (playerCharacter.getLevel()*10)*0.15)
+                                if (playerCharacter.getHealth() < (playerCharacter.getLevel() * 10) * 0.15)
                                     returnHome();
                             }
                             break;
@@ -296,11 +297,11 @@ public class Main {
                             Scanner input1 = new Scanner(System.in);
                             String value1 = input1.nextLine();
                             System.out.println();
-                            if(!value1.equals("")) {
+                            if (!value1.equals("")) {
                                 try {
                                     switch (Integer.parseInt(value1)) {
                                         case 1:
-                                            if(potions[0] == 0) {
+                                            if (potions[0] == 0) {
                                                 System.out.println("You do not have enough of those.");
                                                 break;
                                             }
@@ -308,7 +309,7 @@ public class Main {
                                             potions[0]--;
                                             break;
                                         case 2:
-                                            if(potions[1] == 0) {
+                                            if (potions[1] == 0) {
                                                 System.out.println("You do not have enough of those.");
                                                 break;
                                             }
@@ -333,6 +334,7 @@ public class Main {
                         case 4:
                             System.out.println("Thank you for to playing my game");
                             System.exit(0);
+                            break;
                         default:
                             System.out.println("Incorrect choice.");
                             break;
@@ -364,8 +366,8 @@ public class Main {
 
         //Determine if auto-play
         //Get input from the player
-        System.out.println("\nWould you like to auto-play?\n" +
-                "1: Yes || 2: No ");
+        System.out.println("\nWould you like to auto-play?\n"
+                + "1: Yes || 2: No ");
         Scanner input = new Scanner(System.in);
         String value = input.nextLine();
         System.out.println();
@@ -411,8 +413,8 @@ public class Main {
         //Create the armor set
         //(0) Weapon, (1) Helmet, (2) Chest, (3) Pants, (4) Boots
         armorSet = new Armor[5];
-        for(int i = 0; i < armorSet.length; i++)
-            armorSet[i] = armorBuilder.generateItem(gameState, i+1);
+        for (int i = 0; i < armorSet.length; i++)
+            armorSet[i] = armorBuilder.generateItem(gameState, i + 1);
 
 
 

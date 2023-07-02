@@ -1,15 +1,17 @@
-package org.rpgMain.Floor;
-
-import org.rpgMain.Character.Character;
-import org.rpgMain.CharacterBuilder;
+package org.rpgmain.floor;
 
 import java.util.Random;
+
+import org.rpgmain.CharacterBuilder;
+import org.rpgmain.character.Character;
+
 
 /**
  * Parent class for floor objects.
  */
 public class Floor {
-    private final int floorType, floorNumber;
+    private final int floorType;
+    private final int floorNumber;
     private boolean cleared;
     private final Character enemy;
 
@@ -26,7 +28,7 @@ public class Floor {
 
         //Create a randomly generated enemy from the available choices
         Random random = new Random();
-        int enemyGenerator = random.nextInt(3) +1;
+        int enemyGenerator = random.nextInt(3) + 1;
         CharacterBuilder characterBuilder = new CharacterBuilder();
         enemy = characterBuilder.generateCharacter();
         enemy.setEnemyHealth(floorNumber * floorType);
@@ -38,8 +40,8 @@ public class Floor {
      * @param damage int damage value
      */
     public void doDamage(int damage) {
-        this.enemy.setHealth(-1*damage);
-        if(this.enemy.getHealth() <= 0)
+        this.enemy.setHealth(-1 * damage);
+        if (this.enemy.getHealth() <= 0)
             this.cleared = true;
     }
 
@@ -47,25 +49,33 @@ public class Floor {
      * Provides the status of the floor.
      * @return boolean value of whether the floor is cleared
      */
-    public boolean getClearedStatus() { return this.cleared; }
+    public boolean getClearedStatus() {
+        return this.cleared;
+    }
 
     /**
      * Returns the enemy on the current floor.
      * @return Character enemy
      */
-    public Character getCharacter() { return enemy; }
+    public Character getCharacter() {
+        return enemy;
+    }
 
     /**
      * Gets the value of experience earned when the floor is cleared.
      * @return int experience
      */
-    public int getExperienceGain() { return this.floorNumber*10*this.floorType; }
+    public int getExperienceGain() {
+        return this.floorNumber * 10 * this.floorType;
+    }
 
     /**
      * Gets the value of gold earned when the floor is cleared.
      * @return int gold
      */
-    public int getGoldGain() { return this.floorNumber*100*this.floorType; }
+    public int getGoldGain() {
+        return this.floorNumber * 100 * this.floorType;
+    }
 
     /**
      * Provides a random reward for clearing the floor.

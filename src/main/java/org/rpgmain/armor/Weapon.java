@@ -1,6 +1,4 @@
-package org.rpgMain.Armor;
-
-import org.rpgMain.Armor.Armor;
+package org.rpgmain.armor;
 
 /**
  * Armor child class.
@@ -17,7 +15,7 @@ public class Weapon extends Armor {
      */
     @Override
     public String getImage() {
-        if(super.getWeaponType().equals("Physical"))
+        if (super.getWeaponType().equals("Physical"))
             return "-|====>";
         else
             return "----*";

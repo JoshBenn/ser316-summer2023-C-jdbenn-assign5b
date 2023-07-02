@@ -1,7 +1,7 @@
-package org.rpgMain;
+package org.rpgmain;
 
-import org.rpgMain.Armor.Armor;
-import org.rpgMain.Character.Character;
+import org.rpgmain.armor.Armor;
+import org.rpgmain.character.Character;
 
 /**
  * Output management system.
@@ -18,8 +18,8 @@ public class DisplayOutput {
         System.out.println(player.getImage() + "          Health: "
                 + player.getHealth());
         System.out.println("Info:                    WPN: "
-                + armorSet[0].getImage() + "\n" +
-                "Gold: " + gameState[14] + " || Buff: " + gameState[6]
+                + armorSet[0].getImage() + "\n"
+                + "Gold: " + gameState[14] + " || Buff: " + gameState[6]
                 + " || Debuff: " + gameState[7]);
     }
 
@@ -43,8 +43,8 @@ public class DisplayOutput {
      */
     public void generateOptionsMenu(String prompt, String[] options) {
         System.out.println("\n" + prompt);
-        for(int i = 0; i < options.length; i++)
-            System.out.print("| " + String.valueOf(i+1) + ": " + options[i] + " |");
+        for (int i = 0; i < options.length; i++)
+            System.out.print("| " + String.valueOf(i + 1) + ": " + options[i] + " |");
         System.out.println();
     }
 }

@@ -1,9 +1,8 @@
-//Package Declaration
-package org.rpgMain;
-//Package Imports
-import org.rpgMain.Armor.*;
-//Other Imports
+package org.rpgmain;
+
 import java.util.Random;
+import org.rpgmain.armor.*;
+
 
 /**
  * General builder class for armor pieces.
@@ -28,7 +27,7 @@ public class ArmorBuilder {
      * @return generated item
      */
     public Armor generateItem(String[] gameState, int itemType) {
-        switch(itemType) {
+        switch (itemType) {
             case 1:
                 tempItem = new Weapon(gameState);
                 break;
@@ -43,6 +42,9 @@ public class ArmorBuilder {
                 break;
             case 5:
                 tempItem = new Boots(gameState);
+                break;
+            default:
+                System.out.println("Wrong value");
                 break;
         }
         return tempItem;

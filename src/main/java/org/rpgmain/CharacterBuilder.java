@@ -1,9 +1,9 @@
-package org.rpgMain;
-
-import org.rpgMain.Character.*;
-import org.rpgMain.Character.Character;
+package org.rpgmain;
 
 import java.util.Random;
+
+import org.rpgmain.character.*;
+import org.rpgmain.character.Character;
 
 /**
  * General character builder class.
@@ -18,7 +18,7 @@ public class CharacterBuilder {
      */
     public Character generateCharacter() {
         Random random = new Random();
-        return generateCharacter(random.nextInt(3)+1);
+        return generateCharacter(random.nextInt(3) + 1);
     }
 
     /**
@@ -26,7 +26,7 @@ public class CharacterBuilder {
      * @param selection (1) Cat, (2) Demon, (3) Human
      */
     public Character generateCharacter(int selection) {
-        switch(selection) {
+        switch (selection) {
             case 1:
                 tempCharacter = new Cat();
                 break;
@@ -35,6 +35,9 @@ public class CharacterBuilder {
                 break;
             case 3:
                 tempCharacter = new Human();
+                break;
+            default:
+                System.out.print("Incorrect Option");
                 break;
         }
         return tempCharacter;

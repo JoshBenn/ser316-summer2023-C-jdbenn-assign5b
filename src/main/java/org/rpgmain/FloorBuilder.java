@@ -1,6 +1,6 @@
-package org.rpgMain;
+package org.rpgmain;
 
-import org.rpgMain.Floor.*;
+import org.rpgmain.floor.*;
 
 /**
  * General class to build a floor object.
@@ -15,9 +15,9 @@ public class FloorBuilder {
      */
     public Floor generateFloor(String[] gameState) {
         int floorNumber = Integer.valueOf(gameState[5]);
-        if(floorNumber%10 == 0)
+        if (floorNumber % 10 == 0)
             tempFloor = new BossFloor(floorNumber);
-        else if(floorNumber%5 == 0)
+        else if (floorNumber % 5 == 0)
             tempFloor = new MediumFloor(floorNumber);
         else
             tempFloor = new NormalFloor(floorNumber);

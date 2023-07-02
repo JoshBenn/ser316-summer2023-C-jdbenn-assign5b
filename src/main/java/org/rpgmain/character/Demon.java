@@ -1,6 +1,4 @@
-package org.rpgMain.Character;
-
-import org.rpgMain.Character.Character;
+package org.rpgmain.character;
 
 /**
  * Demon Character class.
@@ -17,9 +15,9 @@ public class Demon extends Character {
      */
     @Override
     public String getImage() {
-        return  "    |__|\n" +
-                "   ( o.o) \n" +
-                "  Z(  >) ";
+        return     "    |__|\n"
+                +  "   ( o.o) \n"
+                +   "  Z(  >) ";
     }
 
     /**
@@ -28,8 +26,8 @@ public class Demon extends Character {
      */
     @Override
     public String getEnemyImage() {
-        return  "                        |__|\n" +
-                "                       (o.o ) \n" +
-                "                        (<  )z ";
+        return    "                        |__|\n"
+                + "                       (o.o ) \n"
+                + "                        (<  )z ";
     }
 }

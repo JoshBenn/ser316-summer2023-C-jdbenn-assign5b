@@ -6,7 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="ec783eb3-7222-4a3a-8760-e83b3d44869c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgMain/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/checkstyle/checkstyle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config/checkstyle/checkstyle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/armor/Armor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/armor/Boots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/armor/Chest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Helmet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/armor/Helmet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Pants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/armor/Pants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Armor/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/armor/Weapon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/ArmorBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/ArmorBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Character/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/character/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Character/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/character/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Character/Demon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/character/Demon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Character/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/character/Human.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/CharacterBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/CharacterBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/DisplayOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/DisplayOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Floor/BossFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/floor/BossFloor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Floor/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/floor/Floor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Floor/MediumFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/floor/MediumFloor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Floor/NormalFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/floor/NormalFloor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/FloorBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/FloorBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/rpgMain/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/rpgmain/Shop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
