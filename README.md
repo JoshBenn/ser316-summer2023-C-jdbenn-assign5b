@@ -6,6 +6,8 @@ Assignment 5
     Builder
     Strategy
 
+Screencast link:
+- https://youtu.be/eQA_o9Qq6fo
     
 Intended direction:
 - Player Character:
