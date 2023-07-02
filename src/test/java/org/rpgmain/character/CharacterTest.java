@@ -5,11 +5,10 @@ import org.junit.Test;
 import org.rpgmain.ArmorBuilder;
 import org.rpgmain.armor.Armor;
 
-import java.util.Random;
 
 public class CharacterTest {
     String[] gameState = {"3", "Either", "1", "0", "10", "1", "None", "None", "None",
-            null, null, null, null, null, null};
+        null, null, null, null, null, null};
     ArmorBuilder armorBuilder = new ArmorBuilder();
     Armor[] armorSet = new Armor[5];
 

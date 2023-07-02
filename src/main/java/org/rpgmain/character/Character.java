@@ -150,6 +150,12 @@ public class Character {
         return (int) Math.ceil(penetration * this.potency);
     }
 
+    /**
+     * Calculate the damage the enemy character does.
+     * @param floorNumber number of floor in the tower
+     * @param floorType type of floor
+     * @return int damage done
+     */
     public int doEnemyDamage(int floorNumber, int floorType) {
         double accuracy = ((double) floorNumber / 100) + this.accuracy;
         double penetration = this.penetration;

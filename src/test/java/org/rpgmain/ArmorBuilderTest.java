@@ -10,7 +10,7 @@ import org.rpgmain.armor.Armor;
 public class ArmorBuilderTest {
     // create a fake gameState to work with -- Human class at level 1
     String[] gameState = {"3", "Either", "1", "0", "10", "1", "None", "None", "None",
-            null, null, null, null, null, null};
+        null, null, null, null, null, null};
 
     /**
      * Test random Armor generation.
