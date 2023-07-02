@@ -137,7 +137,7 @@ public class Character {
         for (int i = 9; i < gameState.length - 1; i++) {
             String[] armorStats = gameState[i].split(":");
             accuracy += Double.parseDouble(armorStats[0]);
-            penetration += Double.parseDouble(armorStats[2]);
+            penetration += Double.parseDouble(armorStats[1]);
         }
         //Accuracy check
         Random random = new Random();
